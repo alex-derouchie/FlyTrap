@@ -23,7 +23,9 @@ namespace FlyTrap.Controllers
         // GET: Projects
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Projects.ToListAsync());
+            return View(await _context.Projects
+                .Where(p => p.OwnerId == User.Identity.Name)
+                .ToListAsync());
         }
 
         // GET: Projects/Details/5

@@ -22,7 +22,9 @@ namespace FlyTrap.Controllers
         // GET: Issues
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Issues.ToListAsync());
+            return View(await _context.Issues
+                .Where(i => i.AuthorId == User.Identity.Name)
+                .ToListAsync());
         }
 
         // GET: Issues/Details/5
