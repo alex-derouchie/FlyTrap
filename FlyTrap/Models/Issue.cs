@@ -13,6 +13,8 @@ namespace FlyTrap.Models
         [Key]
         public int Id { get; set; }
 
+        public int ProjectId { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -24,7 +26,7 @@ namespace FlyTrap.Models
         public int? Priority { get; set; }
 #nullable disable
 
-        public IdentityUser Author { get; }
+        public string AuthorId { get; set; }
 
         public Project Project { get; set; }
     }
