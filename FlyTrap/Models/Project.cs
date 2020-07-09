@@ -17,7 +17,7 @@ namespace FlyTrap.Models
 
         public string Description { get; set; }
 
-        public IdentityUser Owner { get; }
+        public string OwnerId { get; set; }
 
         public ICollection<Issue> Issues { get; set; }
     }

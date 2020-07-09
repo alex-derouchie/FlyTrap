@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FlyTrap.Data;
 using FlyTrap.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace FlyTrap.Controllers
 {
@@ -57,13 +58,21 @@ namespace FlyTrap.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description")] Project project)
+        public async Task<IActionResult> Create([Bind("Title,Description")] Project project)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(project);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    project.OwnerId = User.Identity.Name;
+                    _context.Add(project);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch (DbUpdateException)
+            {
+                ModelState.AddModelError("", "Unable to save changes.");
             }
             return View(project);
         }
@@ -120,7 +129,7 @@ namespace FlyTrap.Controllers
         }
 
         // GET: Projects/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, bool? saveChangesError = false)
         {
             if (id == null)
             {
@@ -128,10 +137,18 @@ namespace FlyTrap.Controllers
             }
 
             var project = await _context.Projects
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (project == null)
             {
                 return NotFound();
+            }
+
+            if (saveChangesError.GetValueOrDefault())
+            {
+                ViewData["ErrorMessage"] =
+                    "Delete failed. Try again, and if the problem persists " +
+                    "see your system administrator.";
             }
 
             return View(project);
@@ -143,9 +160,20 @@ namespace FlyTrap.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var project = await _context.Projects.FindAsync(id);
-            _context.Projects.Remove(project);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            if (project == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            try
+            {
+                _context.Projects.Remove(project);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateException)
+            {
+                return RedirectToAction(nameof(Delete), new { id = id, saveChangesError = true });
+            }
         }
 
         private bool ProjectExists(int id)
