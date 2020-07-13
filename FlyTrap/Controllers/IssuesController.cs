@@ -56,7 +56,7 @@ namespace FlyTrap.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,StackTrace,Location,Priority")] Issue issue, int id)
+        public async Task<IActionResult> Create(int id, [Bind("Id,Title,Description,StackTrace,Location,Priority")] Issue issue)
         {
             if (ModelState.IsValid)
             {

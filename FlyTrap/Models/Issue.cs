@@ -17,8 +17,11 @@ namespace FlyTrap.Models
 
         public string Title { get; set; }
 
+        [MinLength(5)]
+        [MaxLength(1500)]
         public string Description { get; set; }
 
+        [MaxLength(200)]
         public string? StackTrace { get; set; }
 
         public string? Location { get; set; }
