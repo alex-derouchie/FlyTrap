@@ -1,15 +1,55 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+.theme-red {
+    color: #FC4445;
+}
+
+.theme-peri {
+    color: #CAFAFE;
+}
+
+.theme-aqua {
+    color: #3FEEE6;
+}
+
+.theme-steel {
+    color: #97CAEF;
+}
+
+.theme-teal {
+    color: #55BCC9;
+}
+
+.theme-red-bg {
+    background-color: #FC4445;
+}
+
+.theme-peri-bg {
+    background-color: #CAFAFE;
+}
+
+.theme-aqua-bg {
+    background-color: #3FEEE6;
+}
+
+.theme-steel-bg {
+    background-color: #97CAEF;
+}
+
+.theme-teal-bg {
+    background-color: #55BCC9;
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
+
 a {
-  color: #0366d6;
+  color: #55BCC9;
 }
 
 .btn-primary {
@@ -22,6 +62,10 @@ a {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+
+body {
+    background-color: #F5F5F5;
 }
 
 /* Sticky footer styles
