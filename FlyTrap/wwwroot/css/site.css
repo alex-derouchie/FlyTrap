@@ -48,8 +48,35 @@ a.navbar-brand {
 }
 
 
+.wrapper {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+#sidebar.active {
+    margin-left: -250px;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+
 a {
   color: #55BCC9;
+}
+
+/* Hides navbar by default */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+
+    #sidebar.active {
+        margin-left: 0;
+    }
 }
 
 .btn-primary {
