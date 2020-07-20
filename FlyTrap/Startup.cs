@@ -84,7 +84,7 @@ namespace FlyTrap
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Projects}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Dashboard}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
