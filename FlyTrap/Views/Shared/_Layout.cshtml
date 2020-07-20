@@ -65,6 +65,11 @@
                     <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                 </li>
             </ul>
+
+            
+            <div class="footer">
+                &copy; 2020 - FlyTrap - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
         </nav>
 
         <!-- Page Content -->
@@ -72,9 +77,9 @@
             <!-- Sidebar collapse button -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-dark">
                         <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
             </nav>
@@ -83,17 +88,11 @@
                 <main role="main" class="pb-3 main-body">
                     @RenderBody()
                 </main>
+
             </div>
         </div>
 
     </div>
-
-    <!-- Page Footer -->
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - FlyTrap - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

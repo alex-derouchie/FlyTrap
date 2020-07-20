@@ -62,7 +62,18 @@ a.navbar-brand {
     min-width: 250px;
     max-width: 250px;
     min-height: 100vh;
+    transition: all 0.3s
 }
+
+    #sidebar .sidebar-header {
+        padding: 20px 20px 0 20px;
+    }
+
+    #sidebar ul.components {
+        padding: 20px 0;
+        border-bottom: 1px solid #47748b;
+    }
+
 
 a {
   color: #55BCC9;
@@ -129,14 +140,13 @@ html {
   min-height: 100%;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  padding: 10px;
+}
+
+.footer a {
+    color: #000;
+    text-decoration: underline;
 }
