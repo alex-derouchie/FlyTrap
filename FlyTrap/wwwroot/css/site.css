@@ -90,6 +90,22 @@ a {
     }
 }
 
+#login-partial {
+    padding: 20px;
+    position: absolute;
+    bottom: 40px;
+}
+
+.manage-content {
+    padding-top: 20px;
+    padding-left: 60px;
+}
+
+.magage-nav {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
